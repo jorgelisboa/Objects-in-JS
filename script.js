@@ -8,7 +8,7 @@ var jorge = {
 };
 var ana = {
   gitlink: "https://github.com/ThePhoenix0607",
-  nome: "Ana",
+  nome: "Jana",
   vitorias: 0,
   empates: 0,
   derrotas: 0,
@@ -16,11 +16,15 @@ var ana = {
 };
 
 function calculaPontos(jogador) {
-  var pontos = jogador.vitorias * 5 + jogador.empates;
+  var pontos = jogador.vitorias * 100;
   return pontos;
 }
 
-
+function calculaEmpates() {
+    for (var i = 0; i < jogadores.length; i++) {
+        jogadores[i].empates++
+    }
+}
 
 var jogadores = [jorge, ana];
 
@@ -50,16 +54,16 @@ function exibeJogadoresNaTela(jogadores) {
 }
 
 function adicionarVitoria(i) {
-  console.log("adicionarVitoria");
-  var jogador = jogadores[i];
+  console.log("adicionarVitoria")
+  var jogador = jogadores[i]
   jogador.vitorias++;
   jogador.pontos = calculaPontos(jogador);
   exibeJogadoresNaTela(jogadores);
 }
 function adicionarEmpate(i) {
   var jogador = jogadores[i];
-  jogador.empates++;
   jogador.pontos = calculaPontos(jogador);
+  calculaEmpates()
   exibeJogadoresNaTela(jogadores);
 }
 function adicionarDerrota(i) {
